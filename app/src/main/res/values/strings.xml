@@ -1,10 +1,27 @@
 <resources>
-    <string name="app_name">Two Activities</string>
-    <string name="button_main">SEND</string>
-    <string name="activity2_name">Second Activity</string>
-    <string name="text_header">Message Received</string>
-    <string name="editText_main">Enter Your Message Here</string>
-    <string name="button_second">Reply</string>
-    <string name="editText_second">Enter Your Reply Here</string>
-    <string name="text_header_reply">Reply Received</string>
+    <string name="app_name">Shopping List</string>
+    <string name="SecondPageName">Second Page</string>
+    <string name="cheese">Cheese</string>
+    <string name="rice">Rice</string>
+    <string name="apple">Apple</string>
+    <string name="milk">Milk</string>
+    <string name="grapes">Grapes</string>
+    <string name="banana">Banana</string>
+    <string name="mango">Mango</string>
+    <string name="bread">Bread</string>
+    <string name="eggs">Eggs</string>
+    <string name="check_shop">Check Shop</string>
+    <string name="orange">Oranges</string>
+
+    <string name="cheeseList">Cheese</string>
+    <string name="riceList">Rice</string>
+    <string name="appleList">Apple</string>
+    <string name="milkList">Milk</string>
+    <string name="grapesList">Grapes</string>
+    <string name="bananaList">Banana</string>
+    <string name="mangoList">Mango</string>
+    <string name="breadList">Bread</string>
+    <string name="eggsList">Eggs</string>
+    <string name="orangeList">Oranges</string>
+    <string name="add_items">Add Items</string>
 </resources>

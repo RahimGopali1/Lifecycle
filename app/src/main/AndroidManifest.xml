@@ -11,7 +11,7 @@
         android:theme="@style/Theme.TwoActivities">
         <activity
             android:name="com.example.twoactivities_lifecycle.SecondActivity"
-            android:label="@string/activity2_name"
+
             android:parentActivityName="com.example.twoactivities_lifecycle.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
