@@ -13,31 +13,64 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView countTextView;
-    private int count = 0;
+
+    public static final int TEXT_REQUEST = 1;
+    private ShopList items = new ShopList();
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        countTextView = findViewById(R.id.count_textView);
-        if (savedInstanceState != null){
-            String i = savedInstanceState.getString("count_value");
-            countTextView.setText(i);
-            count = Integer.parseInt(i);
+
+        Intent intent = getIntent();
+        if ((savedInstanceState != null)&& (savedInstanceState.getSerializable("list")!= null)){
+            HashMap<String, Integer> l = (HashMap<String, Integer>)savedInstanceState.getSerializable("list");
+            TextView tv = findViewById(R.id.textView);
+            tv.setText("");
+            for (String k : l.keySet()) {
+                String s = l.get(k).toString() + " " + k + "\n";
+                tv.setText(tv.getText() + s);
+                for(int i = 0; i<l.get(k); i++){
+                    items.addItem(k);}
+            }
         }
     }
 
-    public void increment(View view) {
-        count ++;
-        countTextView.setText(String.valueOf(count));
+    public void launchSecondActivity(View view) {
+
+        Intent intent = new Intent(this, SecondActivity.class);
+
+        startActivityForResult(intent, TEXT_REQUEST);
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("count_value", countTextView.getText().toString());
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putSerializable("list", items.getItems());
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == TEXT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                String item = data.getStringExtra(SecondActivity.EXTRA_MESSAGE);
+                items.addItem(item);
+            }
+            drawView();
+        }
+    }
+
+    public void drawView() {
+        HashMap<String, Integer> l = items.getItems();
+        TextView tv = findViewById(R.id.textView);
+        tv.setText("");
+        for (String k : l.keySet()) {
+            String s = l.get(k).toString() + " " + k + "\n";
+            tv.setText(tv.getText() + s);
+        }
+    }
 }
